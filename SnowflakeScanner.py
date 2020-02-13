@@ -80,21 +80,21 @@ def quoteCollect(searchList): # creates indexes of quote strings
     j=0
     for i in range(len(searchList)):
         if searchList[i]=="'":
-            print(i)
+            #print(i)
             iList.append(i)
     for i in range(0, len(iList), 2):
         startList.append(iList[i])
-        print(startList)
+        #print(startList)
     for i in range(1, len(iList), 2):
         jList.append(iList[i])
-    print(jList)
+    #print(jList)
     joinList(startList,jList,searchList)
 
 def joinList(min , max, elementList): # Joins quote strings into simple list object
     finalList=elementList
     for i in range(len(min)):
         finalList[min[i]:max[i]]=[''.join(finalList[min[i]:max[i]])]
-        print(elementList)
+        #print(elementList)
 
     print(elementList)
     return elementList
