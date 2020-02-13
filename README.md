@@ -11,3 +11,25 @@ The scanner must accept the following punctuation characters. Any other characte
 { left curly bracket } right curly bracket | vertical bar
 Single quotes are used to start and end a string constant. A single token should be created for the string without including the quotes.
 If your scanner detects a syntax error, it must produce a reasonable error message that indicates the location of the error in the source code file.
+#Hints
+Hints on creating a scanner
+The first step in creating a scanner is to draw an FSA diagram. Create a Mealy machine by assigning actions to each of the arrows. Convert the circle and arrow drawing to two tables, one specifying the new state given the current state and input symbol, the other specifying the action to be taken given the current state and input symbol.
+You will need to read the input one character at a time.
+In Java, this can be done with the read() method of a BufferedReader. java.io.BufferedReader inFile = new java.io.BufferedReader(new java.io.FileReader(“snow.txt”));
+In C++ you can use the getc function. You will probably want to cast the return value to a char after checking for an end of file.
+You will probably want to group the input characters to use a single index into the state table for similar characters. In Java, you can tell is a character is a
+letter number whitespace in C++: letter number
+Character.isLetter( char )
+Character.isDigit( char )
+Character.isWhitespace( char )
+int isalpha ( int c );
+int isdigit ( int c );
+A general outline of the scanner might be:
+state = 0
+while not EOF
+read a character
+assign inIndex depending on the type of input character action = actionTable[state, inIndex];
+state = stateTable[state, inIndex];
+switch ( action )
+case 0: Do this
+case 1: Do that
